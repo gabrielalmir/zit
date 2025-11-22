@@ -11,6 +11,9 @@ def main():
     if args.command == "init":
         command.initialize_repository()
         return
+    if args.command == "cat-file":
+        command.cat_file(args)
+        return
 
     print("[red]Usage: zit <command> [<args>][/red]", file=sys.stderr)
     sys.exit(1)
