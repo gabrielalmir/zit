@@ -10,4 +10,7 @@ python main.py init
 
 # View object content
 python main.py cat-file -p <object_hash>
+
+# Hash a object (sha1 - 40 chars)
+python main.py hash-object -w <file>
 ```

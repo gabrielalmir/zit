@@ -14,6 +14,9 @@ def main():
     if args.command == "cat-file":
         command.cat_file(args)
         return
+    if args.command == "hash-object":
+        command.hash_object(args)
+        return
 
     print("[red]Usage: zit <command> [<args>][/red]", file=sys.stderr)
     sys.exit(1)
