@@ -1,25 +1,15 @@
-import sys
 
-from rich import print
 
-import command
+import commands
+from command import CommandHandler
 
 
 def main():
-    args = command.parse_commands()
-
-    if args.command == "init":
-        command.initialize_repository()
-        return
-    if args.command == "cat-file":
-        command.cat_file(args)
-        return
-    if args.command == "hash-object":
-        command.hash_object(args)
-        return
-
-    print("[red]Usage: zit <command> [<args>][/red]", file=sys.stderr)
-    sys.exit(1)
+    args = CommandHandler(CommandHandler.parse())
+    args.add_command("init", lambda args: commands.initialize_repository())
+    args.add_command("cat-file", commands.cat_file)
+    args.add_command("hash-object", commands.hash_object)
+    args.execute()
 
 if __name__ == "__main__":
     main()
